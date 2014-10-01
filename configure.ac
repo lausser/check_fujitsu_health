@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_REVISION ($Revision: 1.150 $)
 AC_PREREQ(2.58)
-AC_INIT(check_fujitsu_health,1.0)
+AC_INIT(check_fujitsu_health,1.0.1)
 AM_INIT_AUTOMAKE([tar-pax])
 AC_CANONICAL_HOST
 
@@ -61,11 +61,7 @@ AC_ARG_WITH(perl,
   with_perl=$withval,with_perl=$PERL)
 AC_SUBST(PERL, $with_perl)
 
-AC_OUTPUT(
-  Makefile 
-  plugins-scripts/Makefile 
-  plugins-scripts/subst 
-)
+AC_OUTPUT(Makefile plugins-scripts/Makefile plugins-scripts/subst)
 
 ACX_FEATURE([with],[perl])
 ACX_FEATURE([with],[nagios-user])
