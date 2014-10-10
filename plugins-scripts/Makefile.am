@@ -12,12 +12,12 @@ VPATH=$(top_srcdir) $(top_srcdir)/plugins-scripts $(top_srcdir)/plugins-scripts/
 libexec_SCRIPTS=check_fujitsu_health
 MY_MODULES=
 EXTRA_MODULES=\
-  Nagios/MiniPlugin.pm \
   GLPlugin.pm \
-  Fujitsu/MibsAndOids.pm \
-  Fujitsu/ServerView/Components/EnvironmentalSubsystem.pm \
-  Fujitsu/ServerView.pm \
-  Fujitsu/Device.pm
+  GLPluginSNMP.pm \
+  Classes/Fujitsu/ServerView/Components/EnvironmentalSubsystem.pm \
+  Classes/Fujitsu/ServerView.pm \
+  Classes/MibsAndOids.pm \
+  Classes/Device.pm
 EXTRA_DIST=check_fujitsu_health.pl $(EXTRA_MODULES)
 
 CLEANFILES=$(libexec_SCRIPTS)
@@ -38,6 +38,7 @@ AM_INSTALL_PROGRAM_FLAGS=@INSTALL_OPTS@
 
 $(libexec_SCRIPTS) : $(EXTRA_DIST)
 	$(ECHO) "#! #PERL# -w" | $(AWK) -f ./subst > $@
+	$(ECHO) "# nagios: +epn" >> $@
 	$(ECHO) >> $@
 	for m in ${EXTRA_MODULES}; do \
 		$(SED) -e 's/^1;//g' < $$m | $(AWK) -f ./subst | $(GREP) -v "use Nagios::Plugin" >> $@; \
