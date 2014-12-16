@@ -36,4 +36,15 @@ sub classify {
 }
 
 
+package Classes::Generic;
+our @ISA = qw(Classes::Device);
+use strict;
 
+sub init {
+  my $self = shift;
+  if ($self->mode =~ /something specific/) {
+  } else {
+    bless $self, 'GLPlugin::SNMP';
+    $self->no_such_mode();
+  }
+}
