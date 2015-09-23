@@ -1,22 +1,16 @@
-################################################
-# Changelog of the check_fujitsu_health plugin #
-################################################
-
-2015-04-23 1.1.1.2
-- update GLPlugin[SNMP]
-
-2015-01-26 1.1.1.1
-- update GLPlugin[SNMP]
-
-2014-12-16 1.1.1
-- update GLPlugin[SNMP]
-
-2014-10-10 1.1
-- use the new Classes layout
-
-2014-10-01 1.0.1
-- update GLPlugin
-
-2013-12-18 1.0
-- initial release
-
+* 2015-09-23 1.2.1
+  bugfix in FSC-RAID-MIB subsystem constructor
+* 2015-07-13 1.2
+  new directory layout, standalone
+* 2015-04-23 1.1.1.2
+  update GLPlugin[SNMP]
+* 2015-01-26 1.1.1.1
+  update GLPlugin[SNMP]
+* 2014-12-16 1.1.1
+  update GLPlugin[SNMP]
+* 2014-10-10 1.1
+  use the new Classes layout
+* 2014-10-01 1.0.1
+  update GLPlugin
+* 2013-12-18 1.0
+  initial release

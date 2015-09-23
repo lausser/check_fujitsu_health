@@ -1,5 +1,5 @@
 package Classes::Device;
-our @ISA = qw(GLPlugin::SNMP);
+our @ISA = qw(Monitoring::GLPlugin::SNMP);
 use strict;
 
 sub classify {
@@ -20,6 +20,9 @@ sub classify {
         $self->debug('using Classes::Fujitsu::ServerView');
       } elsif ($self->get_snmp_object('SERVERVIEW-STATUS-MIB', 'sieStAgentId', 0)) {
         bless $self, 'Classes::Fujitsu::ServerView';
+        $self->debug('using Classes::Fujitsu::ServerView');
+      } elsif ($self->implements_mib('FSC-RAID-MIB')) {
+        bless $self, 'Classes::Fujitsu::FscRaid';
         $self->debug('using Classes::Fujitsu::ServerView');
       } else {
         if (my $class = $self->discover_suitable_class()) {
@@ -44,7 +47,7 @@ sub init {
   my $self = shift;
   if ($self->mode =~ /something specific/) {
   } else {
-    bless $self, 'GLPlugin::SNMP';
+    bless $self, 'Monitoring::GLPlugin::SNMP';
     $self->no_such_mode();
   }
 }

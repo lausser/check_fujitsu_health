@@ -1,7 +1,18 @@
 #! /usr/bin/perl
 
 use strict;
-use File::Basename;
+
+eval {
+  if ( ! grep /AUTOLOAD/, keys %Monitoring::GLPlugin::) {
+    require Monitoring::GLPlugin;
+    require Monitoring::GLPlugin::SNMP;
+  }
+};
+if ($@) {
+  printf "UNKNOWN - module Monitoring::GLPlugin was not found. Either build a standalone version of this plugin or set PERL5LIB\n";
+  printf "%s\n", $@;
+  exit 3;
+}
 
 my $plugin = Classes::Device->new(
     shortname => '',
@@ -13,7 +24,6 @@ my $plugin = Classes::Device->new(
     blurb => 'This plugin checks various parameters of network components ',
     url => 'http://labs.consol.de/nagios/check_fujitsu_health',
     timeout => 60,
-    plugin => basename($0),
 );
 
 $plugin->add_mode(

@@ -1,10 +1,17 @@
-$GLPlugin::SNMP::discover_ids = {};
+{
+  no warnings qw(once);
+  $Monitoring::GLPlugin::SNMP::discover_ids = {};
+  $Monitoring::GLPlugin::SNMP::mib_ids = {};
+  $Monitoring::GLPlugin::SNMP::mibs_and_oids = {};
+  $Monitoring::GLPlugin::SNMP::definitions = {};
+}
 
-$GLPlugin::SNMP::mib_ids = {
+$Monitoring::GLPlugin::SNMP::mib_ids = {
   'SERVERVIEW-STATUS-MIB' => '1.3.6.1.4.1.231.2.10.2.11',
+  'FSC-RAID-MIB' => '1.3.6.1.4.1.231.2.49',
 };
 
-$GLPlugin::SNMP::mibs_and_oids = {
+$Monitoring::GLPlugin::SNMP::mibs_and_oids = {
   'SERVERVIEW-STATUS-MIB' => {
     sieStAgentInfo => '1.3.6.1.4.1.231.2.10.2.11.1',
     sieStSystemStatus => '1.3.6.1.4.1.231.2.10.2.11.2',
@@ -67,11 +74,182 @@ $GLPlugin::SNMP::mibs_and_oids = {
     sieStNumberComponents => '1.3.6.1.4.1.231.2.10.2.11.4.2',
     sieStAgentParameters => '1.3.6.1.4.1.231.2.10.2.11.5',
     sieStAgentType => '1.3.6.1.4.1.231.2.10.2.11.5.1',
-
+  },
+  'FSC-RAID-MIB' => {
+    fscRAIDMIB => '1.3.6.1.4.1.231.2.49',
+    svrObjects => '1.3.6.1.4.1.231.2.49.1',
+    svrAgentInfo => '1.3.6.1.4.1.231.2.49.1.1',
+    svrAgentId => '1.3.6.1.4.1.231.2.49.1.1.1',
+    svrAgentCompany => '1.3.6.1.4.1.231.2.49.1.1.2',
+    svrAgentVersion => '1.3.6.1.4.1.231.2.49.1.1.3',
+    svrAgentBuild => '1.3.6.1.4.1.231.2.49.1.1.4',
+    svrAgentOptions => '1.3.6.1.4.1.231.2.49.1.2',
+    svrStatus => '1.3.6.1.4.1.231.2.49.1.3',
+    svrStatusLogicalDrives => '1.3.6.1.4.1.231.2.49.1.3.1',
+    svrStatusLogicalDrivesDefinition => {
+      1 => 'ok',
+      2 => 'prefailure',
+    },
+    svrStatusPhysicalDevices => '1.3.6.1.4.1.231.2.49.1.3.2',
+    svrStatusPhysicalDevicesDefinition => {
+      1 => 'ok',
+      3 => 'failure',
+    },
+    svrStatusControllers => '1.3.6.1.4.1.231.2.49.1.3.3',
+    svrStatusControllersDefinition => {
+      1 => 'ok',
+      2 => 'prefailure',
+    },
+    svrStatusOverall => '1.3.6.1.4.1.231.2.49.1.3.4',
+    svrStatusOverallDefinition => {
+      1 => 'ok',
+      2 => 'prefailure',
+    },
+    svrControllerInfo => '1.3.6.1.4.1.231.2.49.1.4',
+    svrNumberRaidControllers => '1.3.6.1.4.1.231.2.49.1.4.1',
+    svrCtrlTable => '1.3.6.1.4.1.231.2.49.1.4.2',
+    svrCtrlEntry => '1.3.6.1.4.1.231.2.49.1.4.2.1',
+    svrCtrlNr => '1.3.6.1.4.1.231.2.49.1.4.2.1.1',
+    svrCtrlMaxChannelInUse => '1.3.6.1.4.1.231.2.49.1.4.2.1.10',
+    svrCtrlNumberPhysDisks => '1.3.6.1.4.1.231.2.49.1.4.2.1.11',
+    svrCtrlNumberLogicalDrives => '1.3.6.1.4.1.231.2.49.1.4.2.1.12',
+    svrCtrlCacheSize => '1.3.6.1.4.1.231.2.49.1.4.2.1.13',
+    svrCtrlBBUStatus => '1.3.6.1.4.1.231.2.49.1.4.2.1.14',
+    svrCtrlBBUStatusDefinition => {
+      1 => "not Available",
+      2 => "on Line",
+      3 => "on Battery", #w
+      4 => "on Battery Low", #w
+      5 => "charging",
+      6 => "discharging",
+      7 => "failed" #c
+    },
+    svrCtrlStatus => '1.3.6.1.4.1.231.2.49.1.4.2.1.15',
+    svrCtrlInterface => '1.3.6.1.4.1.231.2.49.1.4.2.1.16',
+    svrCtrlBusLocationBus => '1.3.6.1.4.1.231.2.49.1.4.2.1.17',
+    svrCtrlBusLocationDevice => '1.3.6.1.4.1.231.2.49.1.4.2.1.18',
+    svrCtrlBusLocationFunction => '1.3.6.1.4.1.231.2.49.1.4.2.1.19',
+    svrCtrlModelName => '1.3.6.1.4.1.231.2.49.1.4.2.1.2',
+    svrCtrlBusLocationSlot => '1.3.6.1.4.1.231.2.49.1.4.2.1.20',
+    svrCtrlSerialNo => '1.3.6.1.4.1.231.2.49.1.4.2.1.21',
+    svrCtrlDriverName => '1.3.6.1.4.1.231.2.49.1.4.2.1.22',
+    svrCtrlDriverRevision => '1.3.6.1.4.1.231.2.49.1.4.2.1.23',
+    svrCtrlBBUStatusEx => '1.3.6.1.4.1.231.2.49.1.4.2.1.24',
+    svrCtrlDisplayName => '1.3.6.1.4.1.231.2.49.1.4.2.1.25',
+    svrCtrlHostName => '1.3.6.1.4.1.231.2.49.1.4.2.1.26',
+    svrCtrlUEFIDriverRevision => '1.3.6.1.4.1.231.2.49.1.4.2.1.27',
+    svrCtrlManufacturerName => '1.3.6.1.4.1.231.2.49.1.4.2.1.3',
+    svrCtrlBusLocation => '1.3.6.1.4.1.231.2.49.1.4.2.1.4',
+    svrCtrlBusLocationText => '1.3.6.1.4.1.231.2.49.1.4.2.1.5',
+    svrCtrlHardwareRevision => '1.3.6.1.4.1.231.2.49.1.4.2.1.6',
+    svrCtrlFirmwareRevision => '1.3.6.1.4.1.231.2.49.1.4.2.1.7',
+    svrCtrlBiosRevision => '1.3.6.1.4.1.231.2.49.1.4.2.1.8',
+    svrCtrlNumberChannels => '1.3.6.1.4.1.231.2.49.1.4.2.1.9',
+    svrPhysicalDeviceInfo => '1.3.6.1.4.1.231.2.49.1.5',
+    svrNumberPhysicalDevices => '1.3.6.1.4.1.231.2.49.1.5.1',
+    svrPhysicalDeviceTable => '1.3.6.1.4.1.231.2.49.1.5.2',
+    svrPhysicalDeviceEntry => '1.3.6.1.4.1.231.2.49.1.5.2.1',
+    svrPhysicalDeviceCtrlNr => '1.3.6.1.4.1.231.2.49.1.5.2.1.1',
+    svrPhysicalDeviceConfiguredDisk => '1.3.6.1.4.1.231.2.49.1.5.2.1.10',
+    svrPhysicalDeviceInterface => '1.3.6.1.4.1.231.2.49.1.5.2.1.11',
+    svrPhysicalDeviceErrors => '1.3.6.1.4.1.231.2.49.1.5.2.1.12',
+    svrPhysicalDeviceNrBadBlocks => '1.3.6.1.4.1.231.2.49.1.5.2.1.13',
+    svrPhysicalDeviceSmartStatus => '1.3.6.1.4.1.231.2.49.1.5.2.1.14',
+    svrPhysicalDeviceSmartStatusDefinition => {
+      1 => "ok",
+      2 => "failure Predicted",
+      3 => "N/A",
+      4 => "SMART monitoring disabled"
+    },
+    svrPhysicalDeviceStatus => '1.3.6.1.4.1.231.2.49.1.5.2.1.15',
+    svrPhysicalDeviceStatusDefinition => {
+      2  => "is not a hard disk",
+      3  => "online",
+      4  => "can be used for new configuration",
+      5  => "is available but no longer working",
+      6  => "rebuilding",
+      7  => "is a hot spare device for use in any array",
+      8  => "is a hot spare device for use in a dedicated array",
+      9  => "is set to non-working state",
+      10 => "is not configured but a failure has occured",
+      15 => "is currently being formatted",
+      12 => "is not available or not responding"
+    },
+    svrPhysicalDeviceFirmwareRevision => '1.3.6.1.4.1.231.2.49.1.5.2.1.16',
+    svrPhysicalDeviceSerialNumber => '1.3.6.1.4.1.231.2.49.1.5.2.1.17',
+    svrPhysicalDeviceForeignConfig => '1.3.6.1.4.1.231.2.49.1.5.2.1.18',
+    svrPhysicalDeviceIdx => '1.3.6.1.4.1.231.2.49.1.5.2.1.19',
+    svrPhysicalDeviceChannel => '1.3.6.1.4.1.231.2.49.1.5.2.1.2',
+    svrPhysicalDeviceStatusEx => '1.3.6.1.4.1.231.2.49.1.5.2.1.20',
+    svrPhysicalDeviceCapacityMB => '1.3.6.1.4.1.231.2.49.1.5.2.1.21',
+    svrPhysicalDeviceEnclosureNumber => '1.3.6.1.4.1.231.2.49.1.5.2.1.22',
+    svrPhysicalDeviceSlot => '1.3.6.1.4.1.231.2.49.1.5.2.1.23',
+    svrPhysicalDeviceDisplayName => '1.3.6.1.4.1.231.2.49.1.5.2.1.24',
+    svrPhysicalDevicePowerStatus => '1.3.6.1.4.1.231.2.49.1.5.2.1.25',
+    svrPhysicalDeviceTarget => '1.3.6.1.4.1.231.2.49.1.5.2.1.3',
+    svrPhysicalDeviceLUN => '1.3.6.1.4.1.231.2.49.1.5.2.1.4',
+    svrPhysicalDeviceModelName => '1.3.6.1.4.1.231.2.49.1.5.2.1.5',
+    svrPhysicalDeviceVendorName => '1.3.6.1.4.1.231.2.49.1.5.2.1.6',
+    svrPhysicalDeviceCapacity => '1.3.6.1.4.1.231.2.49.1.5.2.1.7',
+    svrPhysicalDeviceMaxTransferRate => '1.3.6.1.4.1.231.2.49.1.5.2.1.8',
+    svrPhysicalDeviceType => '1.3.6.1.4.1.231.2.49.1.5.2.1.9',
+    svrPhysicalDeviceTypeDefinition => {
+      1 => "other",
+      2 => "SCSI",
+      3 => "IDE",
+      4 => "1394",
+      5 => "SATA",
+      6 => "SAS",
+      7 => "FC"
+    },
+    svrLogicalDriveInfo => '1.3.6.1.4.1.231.2.49.1.6',
+    svrNumberLogicalDrives => '1.3.6.1.4.1.231.2.49.1.6.1',
+    svrLogicalDriveTable => '1.3.6.1.4.1.231.2.49.1.6.2',
+    svrLogicalDriveEntry => '1.3.6.1.4.1.231.2.49.1.6.2.1',
+    svrLogicalDriveCtrlNr => '1.3.6.1.4.1.231.2.49.1.6.2.1.1',
+    svrLogicalDriveStatus => '1.3.6.1.4.1.231.2.49.1.6.2.1.10',
+    svrLogicalDriveStatusDefinition => {
+      2 => "drive is OK, all disks working properly",
+      3 => "one disk in this array failed, redundancy lost",
+      4 => "too many disks in this array failed, drive no longer available",
+      5 => "is currently rebuilding (new disk added)",
+      6 => "is currently executing a consistency check",
+      7 => "was just created and is currently being initialized",
+      8 => "is currently being modified (online RAID extension)",
+      9 => "one disk in this array failed, reduced redundancy still available"
+    },
+    svrLogicalDriveName => '1.3.6.1.4.1.231.2.49.1.6.2.1.11',
+    svrLogicalDriveArraySizeMB => '1.3.6.1.4.1.231.2.49.1.6.2.1.12',
+    svrLogicalDriveTotalSizeMB => '1.3.6.1.4.1.231.2.49.1.6.2.1.13',
+    svrLogicalDriveOSDeviceName => '1.3.6.1.4.1.231.2.49.1.6.2.1.14',
+    svrLogicalDriveReadMode => '1.3.6.1.4.1.231.2.49.1.6.2.1.15',
+    svrLogicalDriveCacheMode => '1.3.6.1.4.1.231.2.49.1.6.2.1.16',
+    svrLogicalDriveDiskCacheMode => '1.3.6.1.4.1.231.2.49.1.6.2.1.17',
+    svrLogicalDriveInitStatus => '1.3.6.1.4.1.231.2.49.1.6.2.1.18',
+    svrLogicalDriveStatusEx => '1.3.6.1.4.1.231.2.49.1.6.2.1.19',
+    svrLogicalDriveNr => '1.3.6.1.4.1.231.2.49.1.6.2.1.2',
+    svrLogicalDriveDisplayName => '1.3.6.1.4.1.231.2.49.1.6.2.1.20',
+    svrLogicalDriveArraySize => '1.3.6.1.4.1.231.2.49.1.6.2.1.3',
+    svrLogicalDriveTotalSize => '1.3.6.1.4.1.231.2.49.1.6.2.1.4',
+    svrLogicalDriveRaidLevel => '1.3.6.1.4.1.231.2.49.1.6.2.1.5',
+    svrLogicalDriveRaidLevelStr => '1.3.6.1.4.1.231.2.49.1.6.2.1.6',
+    svrLogicalDriveStripeSize => '1.3.6.1.4.1.231.2.49.1.6.2.1.7',
+    svrLogicalDriveWriteMode => '1.3.6.1.4.1.231.2.49.1.6.2.1.8',
+    svrLogicalDriveProgress => '1.3.6.1.4.1.231.2.49.1.6.2.1.9',
+    svrLogicalDriveContentsTable => '1.3.6.1.4.1.231.2.49.1.6.3',
+    svrLogicalDriveContentsEntry => '1.3.6.1.4.1.231.2.49.1.6.3.1',
+    svrLogicalDriveContentsCtrlNr => '1.3.6.1.4.1.231.2.49.1.6.3.1.1',
+    svrLogicalDriveContentsLogicalDriveNr => '1.3.6.1.4.1.231.2.49.1.6.3.1.2',
+    svrLogicalDriveContentsNr => '1.3.6.1.4.1.231.2.49.1.6.3.1.3',
+    svrLogicalDriveContentsChannel => '1.3.6.1.4.1.231.2.49.1.6.3.1.4',
+    svrLogicalDriveContentsTarget => '1.3.6.1.4.1.231.2.49.1.6.3.1.5',
+    svrLogicalDriveContentsLUN => '1.3.6.1.4.1.231.2.49.1.6.3.1.6',
+    svrLogicalDriveContentsIdx => '1.3.6.1.4.1.231.2.49.1.6.3.1.7',
+    svrLogicalDriveContentsSpanNr => '1.3.6.1.4.1.231.2.49.1.6.3.1.8',
   },
 };
 
-$GLPlugin::SNMP::definitions = {
+$Monitoring::GLPlugin::SNMP::definitions = {
   'SERVERVIEW-STATUS-MIB' => {
   },
 };
