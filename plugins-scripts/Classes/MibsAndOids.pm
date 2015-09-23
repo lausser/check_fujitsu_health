@@ -181,7 +181,7 @@ $Monitoring::GLPlugin::SNMP::mibs_and_oids = {
       8  => "is a hot spare device for use in a dedicated array",
       9  => "is set to non-working state",
       10 => "is not configured but a failure has occured",
-      12 => "is not available or not responding"
+      12 => "is not available or not responding",
       15 => "is currently being formatted",
     },
     svrPhysicalDeviceFirmwareRevision => '1.3.6.1.4.1.231.2.49.1.5.2.1.16',
