@@ -89,21 +89,25 @@ $Monitoring::GLPlugin::SNMP::mibs_and_oids = {
     svrStatusLogicalDrivesDefinition => {
       1 => 'ok',
       2 => 'prefailure',
+      3 => 'failure',
     },
     svrStatusPhysicalDevices => '1.3.6.1.4.1.231.2.49.1.3.2',
     svrStatusPhysicalDevicesDefinition => {
       1 => 'ok',
+      2 => 'prefailure',
       3 => 'failure',
     },
     svrStatusControllers => '1.3.6.1.4.1.231.2.49.1.3.3',
     svrStatusControllersDefinition => {
       1 => 'ok',
       2 => 'prefailure',
+      3 => 'failure',
     },
     svrStatusOverall => '1.3.6.1.4.1.231.2.49.1.3.4',
     svrStatusOverallDefinition => {
       1 => 'ok',
       2 => 'prefailure',
+      3 => 'failure',
     },
     svrControllerInfo => '1.3.6.1.4.1.231.2.49.1.4',
     svrNumberRaidControllers => '1.3.6.1.4.1.231.2.49.1.4.1',
@@ -125,6 +129,11 @@ $Monitoring::GLPlugin::SNMP::mibs_and_oids = {
       7 => "failed" #c
     },
     svrCtrlStatus => '1.3.6.1.4.1.231.2.49.1.4.2.1.15',
+    svrCtrlStatusDefinition => {
+      1 => 'ok',
+      2 => 'prefailure',
+      3 => 'failure',
+    },
     svrCtrlInterface => '1.3.6.1.4.1.231.2.49.1.4.2.1.16',
     svrCtrlBusLocationBus => '1.3.6.1.4.1.231.2.49.1.4.2.1.17',
     svrCtrlBusLocationDevice => '1.3.6.1.4.1.231.2.49.1.4.2.1.18',
@@ -172,8 +181,8 @@ $Monitoring::GLPlugin::SNMP::mibs_and_oids = {
       8  => "is a hot spare device for use in a dedicated array",
       9  => "is set to non-working state",
       10 => "is not configured but a failure has occured",
-      15 => "is currently being formatted",
       12 => "is not available or not responding"
+      15 => "is currently being formatted",
     },
     svrPhysicalDeviceFirmwareRevision => '1.3.6.1.4.1.231.2.49.1.5.2.1.16',
     svrPhysicalDeviceSerialNumber => '1.3.6.1.4.1.231.2.49.1.5.2.1.17',
