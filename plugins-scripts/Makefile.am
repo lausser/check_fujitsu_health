@@ -11,9 +11,6 @@ GL_MODULES=\
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SERVERVIEWSTATUSMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm
 EXTRA_MODULES=\
   Classes/Fujitsu/FscRaid/Components/RaidSubsystem.pm \
