@@ -1,13 +1,25 @@
 libexec_SCRIPTS=check_fujitsu_health
 GL_MODULES=\
-  ../lib/Monitoring/GLPlugin.pm \
-  ../lib/Monitoring/GLPlugin/SNMP.pm
+  ../GLPlugin/lib/Monitoring/GLPlugin/Commandline/Getopt.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/Commandline.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/Item.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/TableItem.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/FSCRAIDMIB.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SERVERVIEWSTATUSMIB.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm
 EXTRA_MODULES=\
   Classes/Fujitsu/FscRaid/Components/RaidSubsystem.pm \
   Classes/Fujitsu/FscRaid.pm \
   Classes/Fujitsu/ServerView/Components/EnvironmentalSubsystem.pm \
   Classes/Fujitsu/ServerView.pm \
-  Classes/MibsAndOids.pm \
   Classes/Device.pm
 
 SED=/bin/sed
@@ -43,7 +55,6 @@ AM_INSTALL_PROGRAM_FLAGS=@INSTALL_OPTS@
 	chmod +x $@
 
 $(libexec_SCRIPTS) : $(EXTRA_DIST)
-	if [ -f ../../GLPlugin/lib/Monitoring/GLPlugin.pm ]; then cp -r ../../GLPlugin/lib ..; fi
 	$(ECHO) "#! #PERL# -w" | $(AWK) -f ./subst > $@
 	$(ECHO) "# nagios: -epn" >> $@
 	$(ECHO) >> $@
