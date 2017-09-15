@@ -7,14 +7,15 @@ GL_MODULES=\
   ../GLPlugin/lib/Monitoring/GLPlugin/Item.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/TableItem.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/SysDescPrettify.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/MIB2MIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SNMPFRAMEWORKMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/FSCRAIDMIB.pm \
-  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SERVERVIEWSTATUSMIB.pm
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SERVERVIEWSTATUSMIB.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/Item.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/TableItem.pm
 EXTRA_MODULES=\
   Classes/Fujitsu/FscRaid/Components/RaidSubsystem.pm \
   Classes/Fujitsu/FscRaid.pm \
