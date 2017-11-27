@@ -12,18 +12,16 @@ sub classify {
       if ($self->opts->verbose && $self->opts->verbose) {
         printf "I am a %s\n", $self->{productname};
       }
-      if ($self->{productname} =~ /Fujitsu ServerView /) {
-        bless $self, 'Classes::Fujitsu::ServerView';
-        $self->debug('using Classes::Fujitsu::ServerView');
+      if ($self->implements_mib('MMB-COM-MIB')) {
+        $self->rebless('Classes::Fujitsu::PRIMEQUEST');
+      } elsif ($self->{productname} =~ /Fujitsu ServerView /) {
+        $self->rebless('Classes::Fujitsu::ServerView');
       } elsif ($self->implements_mib('SERVERVIEW-STATUS-MIB')) {
-        bless $self, 'Classes::Fujitsu::ServerView';
-        $self->debug('using Classes::Fujitsu::ServerView');
+        $self->rebless('Classes::Fujitsu::ServerView');
       } elsif ($self->get_snmp_object('SERVERVIEW-STATUS-MIB', 'sieStAgentId', 0)) {
-        bless $self, 'Classes::Fujitsu::ServerView';
-        $self->debug('using Classes::Fujitsu::ServerView');
+        $self->rebless('Classes::Fujitsu::ServerView');
       } elsif ($self->implements_mib('FSC-RAID-MIB')) {
-        bless $self, 'Classes::Fujitsu::FscRaid';
-        $self->debug('using Classes::Fujitsu::ServerView');
+        $self->rebless('Classes::Fujitsu::FscRaid');
       } else {
         if (my $class = $self->discover_suitable_class()) {
           bless $self, $class;
