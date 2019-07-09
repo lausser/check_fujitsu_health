@@ -24,11 +24,9 @@ sub classify {
         $self->rebless('Classes::Fujitsu::FscRaid');
       } else {
         if (my $class = $self->discover_suitable_class()) {
-          bless $self, $class;
-          $self->debug('using '.$class);
+          $self->rebless($class);
         } else {
-          bless $self, 'Classes::Generic';
-          $self->debug('using Classes::Generic');
+          $self->rebless('Classes::Generic');
         }
       }
     }

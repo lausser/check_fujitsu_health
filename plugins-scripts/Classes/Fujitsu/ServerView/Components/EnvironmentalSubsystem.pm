@@ -4,6 +4,7 @@ use strict;
 
 sub init {
   my $self = shift;
+  $self->mult_snmp_max_msg_size(2);
   $self->get_snmp_objects('SERVERVIEW-STATUS-MIB', qw(sieStSystemStatusValue sieStSystemLastErrorMessage));
   $self->get_snmp_tables('SERVERVIEW-STATUS-MIB', [
       ['subsystems', 'sieStSubsystemTable', 'Classes::Fujitsu::ServerView::Components::Subsystem', sub { my $o = shift; $self->filter_name($o->{sieStSubsystemName})}],
