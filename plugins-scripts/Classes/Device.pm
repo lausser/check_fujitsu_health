@@ -14,6 +14,9 @@ sub classify {
       }
       if ($self->implements_mib('MMB-COM-MIB')) {
         $self->rebless('Classes::Fujitsu::PRIMEQUEST');
+      } elsif ($self->{sysobjectid} =~ /^\.*1\.3\.6\.1\.4\.1\.231\.1\.28\.1$/ ||
+          $self->implements_mib("FSC-SERVERCONTROL2-MIB")) {
+        $self->rebless('Classes::Fujitsu::iRMC');
       } elsif ($self->{productname} =~ /Fujitsu ServerView /) {
         $self->rebless('Classes::Fujitsu::ServerView');
       } elsif ($self->implements_mib('SERVERVIEW-STATUS-MIB')) {

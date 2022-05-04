@@ -13,6 +13,7 @@ GL_MODULES=\
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SNMPFRAMEWORKMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/FSCRAIDMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/SERVERVIEWSTATUSMIB.pm \
+  ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/FSCSERVERCONTROL2MIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/UCDDISKIOMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/MibsAndOids/UCDSNMPMIB.pm \
   ../GLPlugin/lib/Monitoring/GLPlugin/SNMP/CSF.pm \
@@ -21,6 +22,16 @@ GL_MODULES=\
 EXTRA_MODULES=\
   Classes/Fujitsu/FscRaid/Components/RaidSubsystem.pm \
   Classes/Fujitsu/FscRaid.pm \
+  Classes/Fujitsu/iRMC/Components/AllSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/PowersupplySubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/FanSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/TemperatureSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/HWCpuSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/HWMemSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/EnvironmentalSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/MemSubsystem.pm \
+  Classes/Fujitsu/iRMC/Components/CpuSubsystem.pm \
+  Classes/Fujitsu/iRMC.pm \
   Classes/Fujitsu/ServerView/Components/EnvironmentalSubsystem.pm \
   Classes/Fujitsu/ServerView.pm \
   Classes/Fujitsu/PRIMEQUEST/Components/EnvironmentalSubsystem.pm \

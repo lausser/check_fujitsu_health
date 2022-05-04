@@ -28,11 +28,31 @@ my $plugin = Classes::Device->new(
     plugin => $Monitoring::GLPlugin::pluginname,
 );
 $plugin->add_mode(
+    internal => 'device::hardware::load',
+    spec => 'cpu-load',
+    alias => ['cpu-usage'],
+    help => 'Check the cpu load',
+);
+$plugin->add_mode(
+    internal => 'device::hardware::memory',
+    spec => 'memory-usage',
+    alias => undef,
+    help => 'Check the memory usage',
+);
+$plugin->add_mode(
     internal => 'device::hardware::health',
     spec => 'hardware-health',
     alias => undef,
     help => 'Check the status of environmental equipment (fans, temperatures, power, selftests)',
 );
+$plugin->add_arg(
+    spec => 'subsystem=s',
+    help => "--subsystem
+ Select a specific hardware subsystem",
+    required => 0,
+    default => undef,
+);
+
 $plugin->add_snmp_modes();
 $plugin->add_snmp_args();
 $plugin->add_default_args();

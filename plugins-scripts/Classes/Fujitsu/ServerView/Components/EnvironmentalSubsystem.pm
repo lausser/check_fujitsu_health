@@ -20,6 +20,7 @@ sub init {
     }
   }
   delete $self->{components};
+  $self->reset_snmp_max_msg_size();
 }
 
 sub check {
